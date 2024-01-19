@@ -28,6 +28,7 @@ class AddTask(APIView):
         done = request.data['done']
         if task != '':
             new_database_entry = Task(task=task, done=done)
+            #new_database_entry.save(commit=False).manager = request.user
             new_database_entry.save()
             return Response({'message': 'success'})
         else:
